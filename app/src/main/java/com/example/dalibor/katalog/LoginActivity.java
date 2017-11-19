@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.text.method.DateTimeKeyListener;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -18,6 +19,9 @@ import android.widget.Toast;
 import com.example.dalibor.katalog.model.AccessToken;
 import com.example.dalibor.katalog.remote.ApiService;
 import com.example.dalibor.katalog.remote.ApiUtils;
+
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -54,8 +58,11 @@ public class LoginActivity extends AppCompatActivity {
 //        mPasswordView = (EditText) findViewById(R.id.password);
 //        mEmailSignInButton = findViewById(R.id.email_sign_in_button);
 
-        mEmailView.setText("asad@gmail.com");
-        mPasswordView.setText("1Ss!@*");
+//        mEmailView.setText("asad@gmail.com");
+//        mPasswordView.setText("1Ss!@*");
+
+        mEmailView.setText("kosa@gmail.com");
+        mPasswordView.setText("Aa!12345");
 
         mEmailRegisterButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -85,12 +92,8 @@ public class LoginActivity extends AppCompatActivity {
                     getAccessToken(email, password);
 
                 }
-
             }
         });
-
-
-
 }
     private boolean isEmailValid(String email) {
         //TODO: Replace this with your own logic
@@ -120,6 +123,7 @@ public class LoginActivity extends AppCompatActivity {
                     editor.putString("at", accessToken.getAccessToken());
                     editor.putString("rt", accessToken.getRefreshToken());
                     editor.commit();
+
                     Log.i(TAG, "post submitted to API." + response.code() + " " + response.message());
                     Toast.makeText(getApplicationContext(),"Uspesno - " + response.code() + " " + response.message(),Toast.LENGTH_SHORT ).show();
                     Intent intent = new Intent(getApplicationContext(), MainActivity.class);

@@ -90,7 +90,7 @@ public class SongsActivity extends AppCompatActivity {
                 else if (response.code()==401){
                     refreshToken();
                 }
-                if(!response.isSuccessful()){
+                else {
                     Log.e(TAG, "get not submitted to API. - " + response.code() + " " + response.message());
                     Toast.makeText(getApplicationContext(),"Neuspesno - " + response.code()+ " " + response.message(),Toast.LENGTH_SHORT ).show();
                 }

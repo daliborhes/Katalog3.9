@@ -57,20 +57,21 @@
 
             <Button
                 android:id="@+id/email_sign_in_button"
-                style="?android:textAppearanceSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:background="@drawable/btn_layout"
                 android:text="@string/action_sign_in"
-                android:textStyle="bold" />
+                android:textColor="#FFFFFF"/>
+
             <Button
                 android:id="@+id/email_register_button"
-                style="?android:textAppearanceSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Register"
-                android:textStyle="bold" />
+                android:background="@drawable/btn_layout"
+                android:textColor="#FFFFFF"
+                android:text="Register" />
 
         </LinearLayout>
     </ScrollView>

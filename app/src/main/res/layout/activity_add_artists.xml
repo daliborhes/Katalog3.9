@@ -5,11 +5,15 @@
     tools:context=".AddArtistsActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical">
 
     <EditText
         android:id="@+id/addartist_edittext"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Unesite vrednost za dodavanje!"
         android:layout_gravity="center"
@@ -18,11 +22,13 @@
 
     <Button
         android:id="@+id/confirmArtist"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
         android:text="Confirm"
         android:layout_gravity="center"
+        android:background="@drawable/btn_layout"
+        android:textColor="#FFFFFF"
          />
 
     </LinearLayout>

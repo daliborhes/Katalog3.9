@@ -73,12 +73,12 @@
 
             <Button
                 android:id="@+id/email_register_buttonr"
-                style="?android:textAppearanceSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:background="@drawable/btn_layout"
                 android:text="Register"
-                android:textStyle="bold" />
+                android:textColor="#FFFFFF"/>
 
         </LinearLayout>
     </ScrollView>

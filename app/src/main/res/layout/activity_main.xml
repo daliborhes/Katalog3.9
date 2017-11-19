@@ -6,26 +6,35 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
     >
 
 
     <Button
         android:id="@+id/artistsBtn"
-        android:layout_width="150dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@id/songsBtn"
         android:layout_centerHorizontal="true"
         android:text="Artists"
+        android:background="@drawable/btn_layout"
+        android:textColor="#FFFFFF"
         />
+
     <Button
         android:id="@+id/songsBtn"
-        android:layout_width="150dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
         android:text="Songs"
         android:layout_marginBottom="15dp"
         android:layout_marginTop="10dp"
+        android:background="@drawable/btn_layout"
+        android:textColor="#FFFFFF"
 
         />
 

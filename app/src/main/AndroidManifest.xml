@@ -3,13 +3,13 @@
     package="com.example.dalibor.katalog">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
     <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
+        android:name=".remote.ApplicationClass"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -23,7 +23,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity"
+            />
         <activity
             android:name=".ArtistsActivity"
             android:parentActivityName=".MainActivity" />
@@ -32,27 +33,34 @@
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".AddArtistsActivity"
-            android:parentActivityName=".ArtistsActivity" />
+            android:parentActivityName=".ArtistsActivity"
+            android:windowSoftInputMode="stateHidden"/>
         <activity
             android:name=".AddSongsActivity"
-            android:parentActivityName=".SongsActivity" />
+            android:parentActivityName=".SongsActivity"
+            android:windowSoftInputMode="stateHidden"/>
         <activity
             android:name=".SelectedArtistActivity"
-            android:parentActivityName=".ArtistsActivity" />
+            android:parentActivityName=".ArtistsActivity"
+            android:windowSoftInputMode="stateHidden"/>
         <activity
             android:name=".SelectedSongActivity"
-            android:parentActivityName=".SongsActivity" />
+            android:parentActivityName=".SongsActivity"
+            android:windowSoftInputMode="stateHidden"/>
         <activity
             android:name=".EditArtistActivity"
-            android:parentActivityName=".SelectedArtistActivity" />
+            android:parentActivityName=".SelectedArtistActivity"
+            />
         <activity
             android:name=".EditSongActivity"
             android:parentActivityName=".SelectedSongActivity" />
         <activity
             android:name=".LoginActivity"
-            android:label="@string/title_activity_login" />
+            android:label="@string/title_activity_login"
+            android:windowSoftInputMode="stateHidden"/>
         <activity android:name=".RegisterActivity"
-            android:parentActivityName=".LoginActivity" />
+            android:parentActivityName=".LoginActivity"
+            android:windowSoftInputMode="stateHidden"/>
 
     </application>
 

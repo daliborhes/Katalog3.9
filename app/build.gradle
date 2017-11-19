@@ -1,4 +1,14 @@
+plugins {
+    id 'com.onesignal.androidsdk.onesignal-gradle-plugin' version '0.7.0'
+}
+
 apply plugin: 'com.android.application'
+apply plugin: 'com.onesignal.androidsdk.onesignal-gradle-plugin'
+
+repositories {
+    maven { url 'https://maven.google.com' }
+}
+
 
 android {
     compileSdkVersion 26
@@ -9,6 +19,8 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        manifestPlaceholders = [onesignal_app_id: "1c66d92d-f48d-4a72-bf53-63123f92fc7a",
+                                onesignal_google_project_number: "REMOTE"]
     }
     buildTypes {
         release {
@@ -31,5 +43,6 @@ dependencies {
     compile 'com.google.code.gson:gson:2.8.2'
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    compile 'com.onesignal:OneSignal:[3.6.5, 3.99.99]'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 }
