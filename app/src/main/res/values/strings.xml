@@ -14,5 +14,7 @@
     <string name="error_invalid_password">This password is wrong formated</string>
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
+    <string name="action_logout">Logout</string>
+    <string name="action_about">About</string>
 
 </resources>

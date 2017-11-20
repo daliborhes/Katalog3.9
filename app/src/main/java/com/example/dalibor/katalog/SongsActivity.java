@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -28,6 +29,7 @@ import retrofit2.Response;
 
 public class SongsActivity extends AppCompatActivity {
 
+    private Toolbar toolbar;
     private Button addSongsBtn;
     private ListView lvSongs;
     private ArrayAdapter<String> adapter2;
@@ -43,6 +45,8 @@ public class SongsActivity extends AppCompatActivity {
 
         addSongsBtn = (Button) findViewById(R.id.addSongsBtn);
         lvSongs = (ListView) findViewById(R.id.lvSongs);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1);
 

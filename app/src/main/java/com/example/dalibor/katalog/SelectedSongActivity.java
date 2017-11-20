@@ -7,6 +7,7 @@ import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -25,6 +26,7 @@ import retrofit2.Response;
 
 public class SelectedSongActivity extends AppCompatActivity {
 
+    private Toolbar toolbar;
     private Button deleteSong;
     private Button editSong;
     private TextView lvSongItemTxt;
@@ -36,6 +38,8 @@ public class SelectedSongActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_selected_song);
 
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         deleteSong = (Button) findViewById(R.id.delSongsBtn);
         editSong = findViewById(R.id.editSongsBtn);
         lvSongItemTxt = (TextView) findViewById(R.id.tvSongGet);

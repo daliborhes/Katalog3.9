@@ -7,6 +7,7 @@ import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -26,6 +27,7 @@ import retrofit2.Response;
 
 public class AddSongsActivity extends AppCompatActivity {
 
+    private Toolbar toolbar;
     private Button confirmAddSong;
     private EditText editAddSong;
     private ApiService apiServicePost;
@@ -37,6 +39,8 @@ public class AddSongsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_songs);
         confirmAddSong = (Button) findViewById(R.id.confirmSong);
         editAddSong = (EditText) findViewById(R.id.addsong_edittext);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         String pom = preferences.getString("at","");

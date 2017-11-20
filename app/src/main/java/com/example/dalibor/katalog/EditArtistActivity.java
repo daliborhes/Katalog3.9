@@ -7,6 +7,7 @@ import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -25,6 +26,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class EditArtistActivity extends AppCompatActivity {
+
+    private Toolbar toolbar;
     private String s;
     private Button confirmEdit;
     private EditText editArtist;
@@ -37,6 +40,8 @@ public class EditArtistActivity extends AppCompatActivity {
 
         confirmEdit = findViewById(R.id.confirmEditArtist);
         editArtist = findViewById(R.id.editartist_edittext);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         s = getIntent().getStringExtra("Idstringtekst");
         editArtist.setHint(s.subSequence(s.indexOf(" ")+1,s.length()));
