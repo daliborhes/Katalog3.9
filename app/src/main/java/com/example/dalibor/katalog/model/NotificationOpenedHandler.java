@@ -7,6 +7,7 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 
 import com.example.dalibor.katalog.LoginActivity;
+import com.example.dalibor.katalog.MainActivity;
 import com.example.dalibor.katalog.SongsActivity;
 import com.onesignal.OSNotificationAction;
 import com.onesignal.OSNotificationOpenResult;
@@ -58,7 +59,7 @@ public class NotificationOpenedHandler implements OneSignal.NotificationOpenedHa
             context.startActivity(intent);
         }
         else {
-            Intent intent = new Intent(context, SongsActivity.class);
+            Intent intent = new Intent(context, MainActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);
         }
