@@ -3,6 +3,7 @@ package com.example.dalibor.katalog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
 
 import com.example.dalibor.katalog.model.User;
 import com.example.dalibor.katalog.remote.ApiService;
@@ -24,6 +26,7 @@ import retrofit2.Response;
 
 public class RegisterActivity extends AppCompatActivity {
 
+    private Toolbar toolbar;
     @BindView(R.id.emailr)
     AutoCompleteTextView mEmailView;
     @BindView(R.id.passwordr)
@@ -42,6 +45,8 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
         ButterKnife.bind(this);
 
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         apiServiceRegister = ApiUtils.getApiService();
 
         mEmailRegisterButton.setOnClickListener(new View.OnClickListener() {

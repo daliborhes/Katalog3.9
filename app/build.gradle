@@ -45,4 +45,5 @@ dependencies {
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
     compile 'com.onesignal:OneSignal:[3.6.5, 3.99.99]'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    compile 'com.auth0.android:jwtdecode:1.1.1'
 }

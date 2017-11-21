@@ -1,12 +1,20 @@
 package com.example.dalibor.katalog;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.preference.PreferenceManager;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -42,36 +50,44 @@ public class ArtistsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_artists);
-        addArtistsBtn = (Button) findViewById(R.id.addArtistBtn);
-        lvArtists = (ListView) findViewById(R.id.lvArtists);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1);
+        if (isOnline() == false) {
 
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        String pom = preferences.getString("at","");
-        apiServiceGet = ApiUtils.getApiService(pom);
+            Toast.makeText(ArtistsActivity.this, "Proverite internet konekciju", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            addArtistsBtn = (Button) findViewById(R.id.addArtistBtn);
+            lvArtists = (ListView) findViewById(R.id.lvArtists);
 
-        getArtists();
+            adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1);
+
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+            String pom = preferences.getString("at", "");
+            apiServiceGet = ApiUtils.getApiService(pom);
+
+            getArtists();
 
 
-        addArtistsBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intentaddArtist = new Intent(ArtistsActivity.this, AddArtistsActivity.class);
-                startActivity(intentaddArtist);
-            }
-        });
+            addArtistsBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intentaddArtist = new Intent(ArtistsActivity.this, AddArtistsActivity.class);
+                    startActivity(intentaddArtist);
+                }
+            });
 
-        lvArtists.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int positionArtist, long l) {
-                Intent intentlvArtists = new Intent(ArtistsActivity.this, SelectedArtistActivity.class);
-                intentlvArtists.putExtra("lvArtistText", adapter.getItem(positionArtist));
-                startActivity(intentlvArtists);
-            }
-        });
+            lvArtists.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int positionArtist, long l) {
+                    Intent intentlvArtists = new Intent(ArtistsActivity.this, SelectedArtistActivity.class);
+                    intentlvArtists.putExtra("lvArtistText", adapter.getItem(positionArtist));
+                    startActivity(intentlvArtists);
+                }
+            });
+        }
 
 
 
@@ -146,5 +162,42 @@ public class ArtistsActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected (MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_logout:
+                AlertDialog.Builder builder = new AlertDialog.Builder(ArtistsActivity.this);
+                builder.setMessage("Da li ste sigurni da zelite da se izlogujete?")
+                        .setTitle("Fire missiles");
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        finish();
+                    }
+                });
+                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    public boolean isOnline() {
+        ConnectivityManager cm =
+                (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        return netInfo != null && netInfo.isConnectedOrConnecting();
+    }
 
 }
