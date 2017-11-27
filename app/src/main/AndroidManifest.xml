@@ -65,6 +65,10 @@
         <activity android:name=".RegisterActivity"
             android:parentActivityName=".LoginActivity"
             android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".ContactsActivity"
+            android:parentActivityName=".LoginActivity"/>
+        <activity android:name=".SelectedContact"
+            android:parentActivityName=".MainActivity"/>
 
     </application>
 
