@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     Toolbar toolbar;
     private Button artistsBtn;
     private Button songsBtn;
+    private Button contactsBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
         artistsBtn = (Button) findViewById(R.id.artistsBtn);
         songsBtn = (Button) findViewById(R.id.songsBtn);
+        contactsBtn = (Button) findViewById(R.id.contactsBtn);
 
         artistsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,6 +51,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intentSongs = new Intent(MainActivity.this, SongsActivity.class);
                 startActivity(intentSongs);
+            }
+        });
+
+        contactsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentContacts = new Intent(MainActivity.this, ContactsActivity.class);
+                startActivity(intentContacts);
             }
         });
 
