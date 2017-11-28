@@ -24,13 +24,27 @@
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:paddingTop="@dimen/activity_vertical_margin">
+
+        <Button
+            android:id="@+id/contactsBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:text="@string/contactsBtn"
+            android:background="@drawable/btn_layout"
+            android:textColor="#FFFFFF"
+
+            />
+
         <Button
             android:id="@+id/artistsBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_above="@id/songsBtn"
             android:layout_centerHorizontal="true"
-            android:text="Artists"
+            android:text="@string/artistsBtn"
+            android:layout_marginTop="10dp"
             android:background="@drawable/btn_layout"
             android:textColor="#FFFFFF"
             />
@@ -41,25 +55,14 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"
-            android:text="Songs"
+            android:text="@string/songsBtn"
             android:layout_marginTop="10dp"
             android:background="@drawable/btn_layout"
             android:textColor="#FFFFFF"
 
             />
 
-        <Button
-            android:id="@+id/contactsBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_alignParentBottom="true"
-            android:text="Contacts"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/btn_layout"
-            android:textColor="#FFFFFF"
 
-            />
     </LinearLayout>
 
 

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Katalog</string>
+    <string name="app_name">Katalog muzike</string>
     <string name="title_activity_scrolling">ScrollingActivity</string>
 
     <string name="action_settings">Settings</string>
@@ -16,5 +16,9 @@
     <string name="error_field_required">This field is required</string>
     <string name="action_logout">Logout</string>
     <string name="action_about">About</string>
+    <string name="contactsBtn">Contacts</string>
+    <string name="artistsBtn">Artists</string>
+    <string name="songsBtn">Songs</string>
+    <string name="registerBtn">Register</string>
 
 </resources>

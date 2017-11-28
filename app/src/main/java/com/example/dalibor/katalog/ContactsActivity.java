@@ -4,7 +4,9 @@ package com.example.dalibor.katalog;
  * Created by Employee on 27.11.2017..
  */
 import java.util.ArrayList;
-import android.app.Activity;
+import java.util.Collections;
+import java.util.Comparator;
+
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
@@ -14,22 +16,22 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.ContactsContract;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
 
 
-public class ContactsActivity extends Activity {
+public class ContactsActivity extends AppCompatActivity {
 
     private static final int REQUEST_READ_CONTACTS = 444;
     private ListView lvContacts;
-    private ProgressDialog pDialog;
+    private ProgressDialog progressDialog;
     private Handler updateBarHandler;
     private ArrayList<String> contactList;
     private ArrayAdapter <String> adapter;
@@ -41,10 +43,10 @@ public class ContactsActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contacts);
 
-        pDialog = new ProgressDialog(ContactsActivity.this);
-        pDialog.setMessage("Reading contacts...");
-        pDialog.setCancelable(false);
-        pDialog.show();
+        progressDialog = new ProgressDialog(ContactsActivity.this);
+        progressDialog.setMessage("Reading contacts...");
+        progressDialog.setCancelable(false);
+        progressDialog.show();
 
         lvContacts = (ListView) findViewById(R.id.lvContacts);
         updateBarHandler = new Handler();
@@ -106,7 +108,7 @@ public class ContactsActivity extends Activity {
                 null);
 
         if (cursor.getCount() > 0) {
-            counter = 0;
+            //counter = 0;
             while (cursor.moveToNext()) {
                 StringBuffer output = new StringBuffer();
                 String contact_id = cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts._ID));
@@ -120,7 +122,7 @@ public class ContactsActivity extends Activity {
                             null,
                             ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = ?",
                             new String[]{contact_id},
-                            null);
+                            ContactsContract.Contacts.SORT_KEY_PRIMARY + " ASC");
 
                     while (phoneCursor.moveToNext()) {
                         phoneNumber = phoneCursor.getString(phoneCursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
@@ -141,6 +143,8 @@ public class ContactsActivity extends Activity {
                     emailCursor.close();
                 }
                 contactList.add(output.toString());
+                Collections.sort(contactList, String.CASE_INSENSITIVE_ORDER);
+
             }
 
             runOnUiThread(new Runnable() {
@@ -157,7 +161,7 @@ public class ContactsActivity extends Activity {
             updateBarHandler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    pDialog.cancel();
+                    progressDialog.cancel();
                 }
             }, 500);
         }

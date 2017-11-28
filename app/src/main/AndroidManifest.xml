@@ -17,8 +17,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <meta-data android:name="com.onesignal.NotificationOpened.DEFAULT" android:value="DISABLE" />
+        <meta-data
+            android:name="com.onesignal.NotificationOpened.DEFAULT"
+            android:value="DISABLE" />
 
         <activity android:name=".splashScreen">
             <intent-filter>
@@ -27,8 +28,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"
-            />
+        <activity android:name=".MainActivity" />
         <activity
             android:name=".ArtistsActivity"
             android:parentActivityName=".MainActivity" />
@@ -38,38 +38,39 @@
         <activity
             android:name=".AddArtistsActivity"
             android:parentActivityName=".ArtistsActivity"
-            android:windowSoftInputMode="stateHidden"/>
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".AddSongsActivity"
             android:parentActivityName=".SongsActivity"
-            android:windowSoftInputMode="stateHidden"/>
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".SelectedArtistActivity"
             android:parentActivityName=".ArtistsActivity"
-            android:windowSoftInputMode="stateHidden"/>
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".SelectedSongActivity"
             android:parentActivityName=".SongsActivity"
-            android:windowSoftInputMode="stateHidden"/>
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".EditArtistActivity"
-            android:parentActivityName=".SelectedArtistActivity"
-            />
+            android:parentActivityName=".SelectedArtistActivity" />
         <activity
             android:name=".EditSongActivity"
             android:parentActivityName=".SelectedSongActivity" />
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login"
-            android:windowSoftInputMode="stateHidden"/>
-        <activity android:name=".RegisterActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".RegisterActivity"
             android:parentActivityName=".LoginActivity"
-            android:windowSoftInputMode="stateHidden"/>
-        <activity android:name=".ContactsActivity"
-            android:parentActivityName=".LoginActivity"/>
-        <activity android:name=".SelectedContact"
-            android:parentActivityName=".MainActivity"/>
-
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".ContactsActivity"
+            android:parentActivityName=".LoginActivity" />
+        <activity
+            android:name=".SelectedContact"
+            android:parentActivityName=".MainActivity" />
     </application>
 
 </manifest>
