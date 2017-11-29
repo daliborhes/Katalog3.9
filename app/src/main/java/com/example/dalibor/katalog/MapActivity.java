@@ -18,6 +18,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
@@ -44,6 +45,7 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
     private void getDeviceLocation() {
 
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+
         try {
             if (mLocationPermissionGranted) {
                 Task location = mFusedLocationProviderClient.getLastLocation();
@@ -52,9 +54,11 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
                     public void onComplete(@NonNull Task task) {
                         if (task.isSuccessful()) {
                             Log.d(TAG, "onComplete: found location!");
-                            Location currentLocation = (Location) task.getResult();
-
-                            moveCamera(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()), 15);
+                            LatLng location = new LatLng(((Location) task.getResult()).getLatitude(), ((Location) task.getResult()).getLongitude());
+                            mMap.addMarker(new MarkerOptions().position(location).title("I'm here!"));
+                            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 15));
+                            //Location currentLocation = (Location) task.getResult();
+                            //moveCamera(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()), 15);
                         } else {
                             Log.d(TAG, "onComplete: current location is null");
                             Toast.makeText(MapActivity.this, "Unable to get location", Toast.LENGTH_SHORT).show();
@@ -85,13 +89,13 @@ public class MapActivity extends FragmentActivity implements OnMapReadyCallback 
         if (mLocationPermissionGranted) {
             getDeviceLocation();
 
-            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
-                    != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this,
-                    Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-
-                return;
-            }
-            mMap.setMyLocationEnabled(true);
+//            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+//                    != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this,
+//                    Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+//
+//                return;
+//            }
+//            mMap.setMyLocationEnabled(true);
         }
 
 //        LatLng location = new LatLng(0, 0);
