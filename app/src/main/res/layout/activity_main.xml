@@ -61,6 +61,18 @@
             android:textColor="#FFFFFF"
 
             />
+        <Button
+            android:id="@+id/mapBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:text="@string/mapBtn"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/btn_layout"
+            android:textColor="#FFFFFF"
+
+            />
 
 
     </LinearLayout>

@@ -46,4 +46,6 @@ dependencies {
     compile 'com.onesignal:OneSignal:[3.6.5, 3.99.99]'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
     compile 'com.auth0.android:jwtdecode:1.1.1'
+    implementation 'com.google.android.gms:play-services-maps:11.6.2'
+    implementation 'com.google.android.gms:play-services-location:11.6.2'
 }

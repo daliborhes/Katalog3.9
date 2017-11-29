@@ -5,7 +5,6 @@ package com.example.dalibor.katalog;
  */
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
@@ -24,8 +23,6 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import static android.Manifest.permission.READ_CONTACTS;
-
-
 
 public class ContactsActivity extends AppCompatActivity {
 

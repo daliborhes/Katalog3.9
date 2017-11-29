@@ -20,5 +20,6 @@
     <string name="artistsBtn">Artists</string>
     <string name="songsBtn">Songs</string>
     <string name="registerBtn">Register</string>
+    <string name="mapBtn">Load map</string>
 
 </resources>
